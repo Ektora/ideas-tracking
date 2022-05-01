@@ -1,6 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'ideas',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./ideas/ideas.module').then(m=>m.IdeasModule)
   }
 ];
